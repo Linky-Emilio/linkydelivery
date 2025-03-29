@@ -18,9 +18,9 @@ const Navbar = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   
   const navLinks = [
-    { name: 'Request Delivery', path: '/request', icon: <Package className="h-5 w-5 mr-2" /> },
-    { name: 'Driver Dashboard', path: '/driver', icon: <Truck className="h-5 w-5 mr-2" /> },
-    { name: 'Profile', path: '/profile', icon: <User className="h-5 w-5 mr-2" /> },
+    { name: 'Solicitar Entrega', path: '/request', icon: <Package className="h-5 w-5 mr-2" /> },
+    { name: 'Panel de Repartidor', path: '/driver', icon: <Truck className="h-5 w-5 mr-2" /> },
+    { name: 'Perfil', path: '/profile', icon: <User className="h-5 w-5 mr-2" /> },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -29,7 +29,7 @@ const Navbar = () => {
     <header className="sticky top-0 z-50 w-full border-b bg-white shadow-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link to="/" className="flex items-center">
-          <div className="text-2xl font-bold bg-gradient-to-r from-linky-primary to-linky-secondary bg-clip-text text-transparent">
+          <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-purple-400 bg-clip-text text-transparent">
             Linky
           </div>
         </Link>
@@ -51,10 +51,10 @@ const Navbar = () => {
           <Button 
             variant="outline" 
             size="sm"
-            className="flex items-center text-linky-muted"
+            className="flex items-center text-gray-500"
           >
             <LogOut className="h-5 w-5 mr-2" />
-            Sign Out
+            Cerrar Sesión
           </Button>
         </nav>
         
@@ -83,8 +83,8 @@ const Navbar = () => {
                 key={link.path}
                 className={`flex items-center p-3 rounded-md ${
                   isActive(link.path) 
-                    ? 'bg-linky-primary text-white' 
-                    : 'hover:bg-linky-background'
+                    ? 'bg-purple-600 text-white' 
+                    : 'hover:bg-gray-100'
                 }`}
                 onClick={toggleMenu}
               >
@@ -98,7 +98,7 @@ const Navbar = () => {
                 className="w-full flex items-center justify-center"
               >
                 <LogOut className="h-5 w-5 mr-2" />
-                Sign Out
+                Cerrar Sesión
               </Button>
             </div>
           </nav>

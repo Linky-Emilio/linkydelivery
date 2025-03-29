@@ -12,9 +12,9 @@ const RequestDelivery = () => {
     <div className="container mx-auto py-8 px-4">
       <div className="max-w-3xl mx-auto">
         <div className="mb-6">
-          <h1 className="text-3xl font-bold mb-2">Request a Delivery</h1>
-          <p className="text-linky-muted">
-            Fill out the form below to create a new delivery request. Nearby drivers will be able to see and accept your request.
+          <h1 className="text-3xl font-bold mb-2">Solicitar una Entrega</h1>
+          <p className="text-gray-500">
+            Completa el formulario a continuación para crear una nueva solicitud de entrega. Los repartidores cercanos podrán ver y aceptar tu solicitud.
           </p>
         </div>
         
