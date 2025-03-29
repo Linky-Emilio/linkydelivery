@@ -99,9 +99,7 @@ const RequestDeliveryForm = () => {
       <Card>
         <CardHeader>
           <CardTitle>Solicita una entrega</CardTitle>
-          <CardDescription>
-            Fill in the details about your delivery request. Be specific about what needs to be picked up.
-          </CardDescription>
+          <CardDescription>Rellena los detalles de tu solicitud de entrega. Sé específico sobre lo que se debe recoger.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="space-y-2">
