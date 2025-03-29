@@ -10,22 +10,22 @@ const Index = () => {
       <section className="pt-16 pb-20 px-4 text-center">
         <div className="container mx-auto max-w-4xl">
           <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-linky-primary to-linky-secondary bg-clip-text text-transparent">
-            Connect with drivers already on the road
+            Conecta con repartidores ya en camino
           </h1>
           <p className="text-xl mb-10 text-linky-text/80 max-w-2xl mx-auto">
-            Linky connects drivers with daily routes to users who need their orders picked up and delivered at a fair price.
+            Linky conecta a conductores con rutas diarias con usuarios que necesitan que sus pedidos sean recogidos y entregados a un precio justo.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/request">
               <Button size="lg" className="bg-linky-primary hover:bg-linky-primary/90">
                 <Package className="mr-2 h-5 w-5" />
-                Request a Delivery
+                Solicitar una Entrega
               </Button>
             </Link>
             <Link to="/driver">
               <Button size="lg" variant="outline">
                 <Truck className="mr-2 h-5 w-5" />
-                I'm a Driver
+                Soy Repartidor
               </Button>
             </Link>
           </div>
@@ -35,16 +35,16 @@ const Index = () => {
       {/* Features Section */}
       <section className="py-16 px-4 bg-white">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">How Linky Works</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Cómo Funciona Linky</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Feature 1 */}
             <div className="flex flex-col items-center text-center p-6 rounded-lg hover:shadow-md transition-shadow">
               <div className="w-16 h-16 rounded-full bg-linky-primary/10 flex items-center justify-center mb-4">
                 <Package className="h-8 w-8 text-linky-primary" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Request a Delivery</h3>
+              <h3 className="text-xl font-semibold mb-2">Solicita una Entrega</h3>
               <p className="text-linky-muted">
-                Set what you need picked up, where it is, and how much you're willing to pay.
+                Indica qué necesitas recoger, dónde está y cuánto estás dispuesto a pagar.
               </p>
             </div>
             
@@ -53,9 +53,9 @@ const Index = () => {
               <div className="w-16 h-16 rounded-full bg-linky-primary/10 flex items-center justify-center mb-4">
                 <Truck className="h-8 w-8 text-linky-primary" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Drivers Pick Up</h3>
+              <h3 className="text-xl font-semibold mb-2">Los Repartidores Recogen</h3>
               <p className="text-linky-muted">
-                Nearby drivers see your request and can accept it if it matches their route.
+                Los repartidores cercanos ven tu solicitud y pueden aceptarla si coincide con su ruta.
               </p>
             </div>
             
@@ -64,9 +64,9 @@ const Index = () => {
               <div className="w-16 h-16 rounded-full bg-linky-primary/10 flex items-center justify-center mb-4">
                 <Star className="h-8 w-8 text-linky-primary" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Receive Your Items</h3>
+              <h3 className="text-xl font-semibold mb-2">Recibe tus Artículos</h3>
               <p className="text-linky-muted">
-                Get your delivery at your preferred location and rate your experience.
+                Recibe tu entrega en la ubicación preferida y califica tu experiencia.
               </p>
             </div>
           </div>
@@ -76,7 +76,7 @@ const Index = () => {
       {/* Benefits Section */}
       <section className="py-16 px-4">
         <div className="container mx-auto max-w-5xl">
-          <h2 className="text-3xl font-bold text-center mb-12">Why Choose Linky</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Por qué elegir Linky</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Benefit 1 */}
             <div className="flex items-start p-4">
@@ -86,9 +86,9 @@ const Index = () => {
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2">Custom Timeframes</h3>
+                <h3 className="text-xl font-semibold mb-2">Horarios Personalizados</h3>
                 <p className="text-linky-muted">
-                  You decide when you need your delivery. No more waiting all day for packages.
+                  Tú decides cuándo necesitas tu entrega. No más esperas durante todo el día por tus paquetes.
                 </p>
               </div>
             </div>
@@ -101,9 +101,9 @@ const Index = () => {
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2">Fair Pricing</h3>
+                <h3 className="text-xl font-semibold mb-2">Precios Justos</h3>
                 <p className="text-linky-muted">
-                  You set your price, drivers choose what works for them. No hidden fees.
+                  Tú estableces tu precio, los repartidores eligen lo que les funciona. Sin cargos ocultos.
                 </p>
               </div>
             </div>
@@ -116,9 +116,9 @@ const Index = () => {
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2">Secure & Reliable</h3>
+                <h3 className="text-xl font-semibold mb-2">Seguro y Confiable</h3>
                 <p className="text-linky-muted">
-                  All drivers are verified and rated. Track your delivery in real-time.
+                  Todos los repartidores están verificados y calificados. Rastrea tu entrega en tiempo real.
                 </p>
               </div>
             </div>
@@ -131,9 +131,9 @@ const Index = () => {
                 </div>
               </div>
               <div>
-                <h3 className="text-xl font-semibold mb-2">Eco-Friendly</h3>
+                <h3 className="text-xl font-semibold mb-2">Ecológico</h3>
                 <p className="text-linky-muted">
-                  By using drivers already on the road, we reduce carbon emissions from dedicated deliveries.
+                  Al utilizar repartidores que ya están en la carretera, reducimos las emisiones de carbono de las entregas dedicadas.
                 </p>
               </div>
             </div>
@@ -144,14 +144,14 @@ const Index = () => {
       {/* CTA Section */}
       <section className="py-16 px-4 bg-gradient-to-r from-linky-primary to-linky-secondary text-white">
         <div className="container mx-auto text-center max-w-3xl">
-          <h2 className="text-3xl font-bold mb-6">Ready to try Linky?</h2>
+          <h2 className="text-3xl font-bold mb-6">¿Listo para probar Linky?</h2>
           <p className="text-lg mb-8 opacity-90">
-            Join thousands of users who are already saving time and money with Linky.
+            Únete a miles de usuarios que ya están ahorrando tiempo y dinero con Linky.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/request">
               <Button size="lg" variant="secondary" className="bg-white text-linky-primary hover:bg-white/90">
-                Request Your First Delivery
+                Solicita tu Primera Entrega
               </Button>
             </Link>
           </div>
@@ -168,7 +168,7 @@ const Index = () => {
               </div>
             </div>
             <div className="text-sm text-linky-muted">
-              © {new Date().getFullYear()} Linky. All rights reserved.
+              © {new Date().getFullYear()} Linky. Todos los derechos reservados.
             </div>
           </div>
         </div>

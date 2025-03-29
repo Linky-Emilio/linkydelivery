@@ -13,6 +13,7 @@ import { Badge } from '@/components/ui/badge';
 import { Search, Route, MapPin } from 'lucide-react';
 import DeliveryRequestCard, { DeliveryRequest } from '@/components/DeliveryRequestCard';
 import { mockDeliveryRequests } from '@/data/mockDeliveries';
+import RouteMap from '@/components/RouteMap';
 
 const DriverDashboard = () => {
   const [deliveries, setDeliveries] = useState<DeliveryRequest[]>([]);
@@ -20,9 +21,10 @@ const DriverDashboard = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterTimeframe, setFilterTimeframe] = useState<string>('all');
   const [isLoading, setIsLoading] = useState(true);
+  const [showMap, setShowMap] = useState(false);
   const [route, setRoute] = useState({
-    start: 'San Francisco, CA',
-    end: 'San Jose, CA'
+    start: 'Ciudad de México, CDMX',
+    end: 'Cuernavaca, Morelos'
   });
 
   useEffect(() => {
@@ -75,7 +77,7 @@ const DriverDashboard = () => {
 
   const handleAcceptDelivery = (id: string) => {
     // In a real app, this would call an API to accept the delivery
-    console.log(`Accepting delivery with id: ${id}`);
+    console.log(`Aceptando entrega con id: ${id}`);
     
     // Update local state to reflect the change
     const updatedDeliveries = deliveries.map(delivery => 
@@ -87,12 +89,16 @@ const DriverDashboard = () => {
     setDeliveries(updatedDeliveries);
   };
 
+  const updateRoute = () => {
+    setShowMap(true);
+  };
+
   return (
     <div className="container mx-auto py-8 px-4">
       <div className="mb-6">
-        <h1 className="text-3xl font-bold mb-2">Driver Dashboard</h1>
+        <h1 className="text-3xl font-bold mb-2">Panel de Repartidor</h1>
         <p className="text-linky-muted">
-          Find delivery requests along your route and earn extra money.
+          Encuentra solicitudes de entrega en tu ruta y gana dinero extra.
         </p>
       </div>
       
@@ -100,7 +106,7 @@ const DriverDashboard = () => {
       <div className="bg-white rounded-lg p-4 shadow-sm border mb-6">
         <div className="flex items-center mb-2">
           <Route className="h-5 w-5 mr-2 text-linky-primary" />
-          <h2 className="text-lg font-semibold">Your Current Route</h2>
+          <h2 className="text-lg font-semibold">Tu Ruta Actual</h2>
         </div>
         <div className="flex flex-col sm:flex-row sm:items-center gap-3 mt-2">
           <div className="flex items-center flex-grow">
@@ -108,24 +114,38 @@ const DriverDashboard = () => {
             <Input 
               value={route.start}
               onChange={(e) => setRoute({...route, start: e.target.value})}
-              placeholder="Starting point"
+              placeholder="Punto de partida"
               className="max-w-xs"
             />
           </div>
-          <div className="hidden sm:block">to</div>
+          <div className="hidden sm:block">a</div>
           <div className="flex items-center flex-grow">
             <MapPin className="h-4 w-4 text-linky-muted mr-2" />
             <Input 
               value={route.end}
               onChange={(e) => setRoute({...route, end: e.target.value})}
-              placeholder="Destination"
+              placeholder="Destino"
               className="max-w-xs"
             />
           </div>
-          <Button className="bg-linky-primary hover:bg-linky-primary/90">
-            Update Route
+          <Button 
+            className="bg-linky-primary hover:bg-linky-primary/90"
+            onClick={updateRoute}
+          >
+            Actualizar Ruta
           </Button>
         </div>
+
+        {/* Map Component */}
+        {showMap && (
+          <div className="mt-4">
+            <RouteMap 
+              startPoint={route.start} 
+              endPoint={route.end} 
+              className="h-64 w-full mt-2" 
+            />
+          </div>
+        )}
       </div>
       
       {/* Filters */}
@@ -133,7 +153,7 @@ const DriverDashboard = () => {
         <div className="relative flex-grow">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-linky-muted" />
           <Input
-            placeholder="Search for deliveries..."
+            placeholder="Buscar entregas..."
             value={searchTerm}
             onChange={handleSearchChange}
             className="pl-10"
@@ -142,15 +162,15 @@ const DriverDashboard = () => {
         <div className="w-full md:w-64">
           <Select value={filterTimeframe} onValueChange={handleTimeframeChange}>
             <SelectTrigger>
-              <SelectValue placeholder="Filter by timeframe" />
+              <SelectValue placeholder="Filtrar por tiempo" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">All Timeframes</SelectItem>
-              <SelectItem value="1 hour">1 Hour</SelectItem>
-              <SelectItem value="2 hours">2 Hours</SelectItem>
-              <SelectItem value="4 hours">4 Hours</SelectItem>
-              <SelectItem value="Today">Today</SelectItem>
-              <SelectItem value="Tomorrow">Tomorrow</SelectItem>
+              <SelectItem value="all">Todos los tiempos</SelectItem>
+              <SelectItem value="1 hour">1 Hora</SelectItem>
+              <SelectItem value="2 hours">2 Horas</SelectItem>
+              <SelectItem value="4 hours">4 Horas</SelectItem>
+              <SelectItem value="Today">Hoy</SelectItem>
+              <SelectItem value="Tomorrow">Mañana</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -159,10 +179,10 @@ const DriverDashboard = () => {
       {/* Results Count */}
       <div className="mb-4 flex items-center">
         <Badge variant="outline" className="mr-2">
-          {filteredDeliveries.length} result{filteredDeliveries.length !== 1 ? 's' : ''}
+          {filteredDeliveries.length} resultado{filteredDeliveries.length !== 1 ? 's' : ''}
         </Badge>
         <span className="text-sm text-linky-muted">
-          Deliveries near your route
+          Entregas cerca de tu ruta
         </span>
       </div>
       
@@ -196,10 +216,10 @@ const DriverDashboard = () => {
       ) : (
         <div className="text-center py-12 border rounded-lg bg-white">
           <div className="text-linky-muted mb-2">
-            No delivery requests found.
+            No se encontraron solicitudes de entrega.
           </div>
           <p className="text-sm">
-            Try changing your search or filter criteria.
+            Intenta cambiar tus criterios de búsqueda o filtros.
           </p>
         </div>
       )}
