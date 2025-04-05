@@ -77,7 +77,7 @@ const Index = () => {
                 <div className="bg-purple-100 rounded-[50px] p-4">
                   <div className="bg-purple-500 rounded-[40px] overflow-hidden shadow-xl">
                     <div className="p-4 pt-8 pb-12 relative">
-                      {/* Ruta y ubicaciones */}
+                      {/* Ruta y ubicaciones con pedidos actualizados */}
                       <div className="h-64 relative mb-4">
                         <div className="absolute inset-0 flex items-center justify-center">
                           <svg className="w-full h-full" viewBox="0 0 240 240">
@@ -90,32 +90,77 @@ const Index = () => {
                             />
                             <circle cx="40" cy="60" r="15" fill="#f3e8ff" />
                             <text x="40" y="65" textAnchor="middle" fill="#6d28d9" fontWeight="bold">A</text>
-                            <circle cx="90" cy="100" r="8" fill="#4c1d95" fillOpacity="0.6" />
-                            <circle cx="140" cy="70" r="8" fill="#4c1d95" fillOpacity="0.6" />
-                            <circle cx="100" cy="150" r="8" fill="#4c1d95" fillOpacity="0.6" />
+                            
+                            {/* Pedido 1 */}
+                            <circle cx="90" cy="100" r="12" fill="#8b5cf6" fillOpacity="0.8" />
+                            <text x="90" y="104" textAnchor="middle" fill="white" fontWeight="bold" fontSize="10">1</text>
+                            
+                            {/* Pedido 2 */}
+                            <circle cx="140" cy="70" r="12" fill="#8b5cf6" fillOpacity="0.8" />
+                            <text x="140" y="74" textAnchor="middle" fill="white" fontWeight="bold" fontSize="10">2</text>
+                            
+                            {/* Pedido 3 */}
+                            <circle cx="100" cy="150" r="12" fill="#8b5cf6" fillOpacity="0.8" />
+                            <text x="100" y="154" textAnchor="middle" fill="white" fontWeight="bold" fontSize="10">3</text>
+                            
                             <circle cx="180" cy="180" r="15" fill="#f3e8ff" />
                             <text x="180" y="185" textAnchor="middle" fill="#6d28d9" fontWeight="bold">B</text>
                           </svg>
                         </div>
                       </div>
                       
-                      {/* Métricas */}
+                      {/* Métricas actualizadas */}
                       <div className="grid grid-cols-2 gap-2 mb-4">
                         <div className="bg-purple-700 rounded-lg p-3 text-white text-center">
-                          <div className="text-2xl font-bold">10 min</div>
-                          <div className="text-sm">desvío</div>
+                          <div className="text-2xl font-bold">+$270</div>
+                          <div className="text-sm">ganancias totales</div>
                         </div>
                         <div className="bg-purple-600 rounded-lg p-3 text-white text-center">
-                          <div className="text-2xl font-bold">54</div>
-                          <div className="text-sm">ganancias</div>
+                          <div className="text-2xl font-bold">3</div>
+                          <div className="text-sm">pedidos</div>
                         </div>
                       </div>
                       
-                      {/* Texto inferior */}
+                      {/* Lista de pedidos disponibles */}
                       <div className="text-white text-lg font-medium text-center mb-2">
                         ¿Qué pedidos recogerás?
                       </div>
-                      <div className="bg-purple-800 rounded-lg p-4 h-16 w-full"></div>
+                      <div className="bg-purple-800 rounded-lg p-2 overflow-hidden">
+                        <div className="space-y-2 max-h-32 overflow-y-auto">
+                          <div className="bg-purple-700 rounded p-2 flex justify-between items-center">
+                            <div className="flex items-center gap-1">
+                              <span className="bg-white text-purple-800 h-4 w-4 rounded-full flex items-center justify-center text-xs font-bold">1</span>
+                              <span>Paquete pequeño</span>
+                            </div>
+                            <div className="flex items-center gap-1 text-sm">
+                              <span>+$90</span>
+                              <span className="text-green-300">8 min</span>
+                            </div>
+                          </div>
+                          
+                          <div className="bg-purple-700 rounded p-2 flex justify-between items-center">
+                            <div className="flex items-center gap-1">
+                              <span className="bg-white text-purple-800 h-4 w-4 rounded-full flex items-center justify-center text-xs font-bold">2</span>
+                              <span>Compras</span>
+                            </div>
+                            <div className="flex items-center gap-1 text-sm">
+                              <span>+$120</span>
+                              <span className="text-yellow-300">15 min</span>
+                            </div>
+                          </div>
+                          
+                          <div className="bg-purple-700 rounded p-2 flex justify-between items-center">
+                            <div className="flex items-center gap-1">
+                              <span className="bg-white text-purple-800 h-4 w-4 rounded-full flex items-center justify-center text-xs font-bold">3</span>
+                              <span>Documentos</span>
+                            </div>
+                            <div className="flex items-center gap-1 text-sm">
+                              <span>+$60</span>
+                              <span className="text-green-300">5 min</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
