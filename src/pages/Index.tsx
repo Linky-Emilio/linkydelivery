@@ -1,7 +1,8 @@
 
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Package, Truck, Star, Shield, Clock, DollarSign } from 'lucide-react';
+import { Package, Truck, Star, Shield, Clock, DollarSign, MapPin, Phone } from 'lucide-react';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
 
 const Index = () => {
   return (
@@ -32,8 +33,110 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Features Section */}
+      {/* App Illustration Section */}
       <section className="py-16 px-4 bg-white">
+        <div className="container mx-auto max-w-6xl">
+          <h2 className="text-3xl font-bold text-center mb-12">La Forma Más Inteligente de Entregar</h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="order-2 lg:order-1">
+              <div className="space-y-6">
+                <div className="bg-linky-background p-6 rounded-lg">
+                  <h3 className="font-semibold text-xl mb-2 flex items-center">
+                    <MapPin className="mr-2 text-linky-primary" />
+                    Rutas Optimizadas
+                  </h3>
+                  <p className="text-linky-muted">
+                    Los repartidores reciben solicitudes que coinciden con su ruta actual, minimizando desvíos innecesarios.
+                  </p>
+                </div>
+                
+                <div className="bg-linky-background p-6 rounded-lg">
+                  <h3 className="font-semibold text-xl mb-2 flex items-center">
+                    <DollarSign className="mr-2 text-linky-primary" />
+                    Ganancias Transparentes
+                  </h3>
+                  <p className="text-linky-muted">
+                    Los conductores ven claramente cuánto ganarán por cada entrega antes de aceptarla.
+                  </p>
+                </div>
+                
+                <div className="bg-linky-background p-6 rounded-lg">
+                  <h3 className="font-semibold text-xl mb-2 flex items-center">
+                    <Clock className="mr-2 text-linky-primary" />
+                    Control de Tiempo
+                  </h3>
+                  <p className="text-linky-muted">
+                    Los usuarios eligen cuándo quieren recibir sus pedidos y los repartidores deciden cuándo realizar entregas.
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="order-1 lg:order-2 relative max-w-xs mx-auto">
+              <div className="relative">
+                <div className="bg-purple-100 rounded-[50px] p-4">
+                  <div className="bg-purple-500 rounded-[40px] overflow-hidden shadow-xl">
+                    <div className="p-4 pt-8 pb-12 relative">
+                      {/* Ruta y ubicaciones */}
+                      <div className="h-64 relative mb-4">
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <svg className="w-full h-full" viewBox="0 0 240 240">
+                            <path
+                              d="M40,60 C80,50 100,150 160,120 C220,90 200,160 180,180"
+                              stroke="#2a1a5e"
+                              strokeWidth="8"
+                              fill="none"
+                              strokeLinecap="round"
+                            />
+                            <circle cx="40" cy="60" r="15" fill="#f3e8ff" />
+                            <text x="40" y="65" textAnchor="middle" fill="#6d28d9" fontWeight="bold">A</text>
+                            <circle cx="90" cy="100" r="8" fill="#4c1d95" fillOpacity="0.6" />
+                            <circle cx="140" cy="70" r="8" fill="#4c1d95" fillOpacity="0.6" />
+                            <circle cx="100" cy="150" r="8" fill="#4c1d95" fillOpacity="0.6" />
+                            <circle cx="180" cy="180" r="15" fill="#f3e8ff" />
+                            <text x="180" y="185" textAnchor="middle" fill="#6d28d9" fontWeight="bold">B</text>
+                          </svg>
+                        </div>
+                      </div>
+                      
+                      {/* Métricas */}
+                      <div className="grid grid-cols-2 gap-2 mb-4">
+                        <div className="bg-purple-700 rounded-lg p-3 text-white text-center">
+                          <div className="text-2xl font-bold">10 min</div>
+                          <div className="text-sm">desvío</div>
+                        </div>
+                        <div className="bg-purple-600 rounded-lg p-3 text-white text-center">
+                          <div className="text-2xl font-bold">54</div>
+                          <div className="text-sm">ganancias</div>
+                        </div>
+                      </div>
+                      
+                      {/* Texto inferior */}
+                      <div className="text-white text-lg font-medium text-center mb-2">
+                        ¿Qué pedidos recogerás?
+                      </div>
+                      <div className="bg-purple-800 rounded-lg p-4 h-16 w-full"></div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Mano sosteniendo el teléfono */}
+                <div className="absolute -bottom-5 -left-10 -right-10 h-24">
+                  <img 
+                    src="/lovable-uploads/a7885d26-a217-4907-9c76-2f08f5ae2241.png" 
+                    alt="Mano sosteniendo teléfono" 
+                    className="object-contain h-full w-full object-top"
+                    style={{ filter: 'brightness(0.95) contrast(0.95)' }}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Features Section */}
+      <section className="py-16 px-4">
         <div className="container mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12">Cómo Funciona Linky</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -74,7 +177,7 @@ const Index = () => {
       </section>
       
       {/* Benefits Section */}
-      <section className="py-16 px-4">
+      <section className="py-16 px-4 bg-white">
         <div className="container mx-auto max-w-5xl">
           <h2 className="text-3xl font-bold text-center mb-12">Por qué elegir Linky</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
