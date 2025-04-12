@@ -44,9 +44,9 @@ const RouteMap = ({
     
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/streets-v11',
-      center: [-99.1332, 19.4326], // Centro en CDMX por defecto
-      zoom: 10
+      style: 'mapbox://styles/mapbox/dark-v11', // Cambiamos a estilo oscuro para que combine con el diseño
+      center: [-70.6693, -33.4489], // Centro en Santiago de Chile
+      zoom: 12
     });
 
     // Agregar controles de navegación
@@ -68,62 +68,71 @@ const RouteMap = ({
   useEffect(() => {
     if (!map.current || !mapboxToken || pickupPoints.length === 0) return;
 
-    // Simulamos coordenadas para los puntos de recogida
-    // En una implementación real, estas vendrían del backend o una API de geocodificación
-    const simulatedCoordinates = [
-      [-99.1432, 19.4226], // Punto 1
-      [-99.1532, 19.4426], // Punto 2
-      [-99.1232, 19.4326], // Punto 3
-      [-99.1132, 19.4126]  // Punto 4
+    // Coordenadas simuladas para Santiago de Chile
+    const santiagoCoordinates = [
+      [-70.6693, -33.4489], // Centro
+      [-70.6593, -33.4389], // Providencia
+      [-70.6793, -33.4389], // Santiago Centro
+      [-70.6893, -33.4289], // Las Condes
+      [-70.6493, -33.4589], // Ñuñoa
+      [-70.6993, -33.4689], // Estación Central
+      [-70.6293, -33.4489], // La Reina
+      [-70.7093, -33.4189], // Vitacura
+      [-70.6193, -33.4789], // Macul
+      [-70.7193, -33.4589]  // Lo Prado
     ];
 
     // Limpiamos marcadores anteriores
     const existingMarkers = document.querySelectorAll('.pickup-marker');
     existingMarkers.forEach(marker => marker.remove());
 
-    // Agregamos los nuevos marcadores
-    pickupPoints.forEach((point, index) => {
-      if (index < simulatedCoordinates.length) {
-        // Creamos el elemento del marcador
-        const el = document.createElement('div');
-        el.className = 'pickup-marker';
-        el.style.width = '30px';
-        el.style.height = '30px';
-        el.style.borderRadius = '50%';
-        el.style.backgroundColor = '#8b5cf6';
-        el.style.display = 'flex';
-        el.style.alignItems = 'center';
-        el.style.justifyContent = 'center';
-        el.style.color = 'white';
-        el.style.fontWeight = 'bold';
-        el.style.border = '2px solid white';
-        el.style.boxShadow = '0 2px 4px rgba(0,0,0,0.3)';
-        el.style.cursor = 'pointer';
-        el.innerHTML = (index + 1).toString();
+    // Agregamos muchos más marcadores para mostrar pedidos disponibles
+    const totalMarkers = Math.min(santiagoCoordinates.length, pickupPoints.length);
+    
+    for (let i = 0; i < totalMarkers; i++) {
+      // Creamos el elemento del marcador
+      const el = document.createElement('div');
+      el.className = 'pickup-marker';
+      el.style.width = '30px';
+      el.style.height = '30px';
+      el.style.borderRadius = '50%';
+      el.style.backgroundColor = '#8b5cf6';
+      el.style.display = 'flex';
+      el.style.alignItems = 'center';
+      el.style.justifyContent = 'center';
+      el.style.color = 'white';
+      el.style.fontWeight = 'bold';
+      el.style.border = '2px solid white';
+      el.style.boxShadow = '0 2px 4px rgba(0,0,0,0.3)';
+      el.style.cursor = 'pointer';
+      el.innerHTML = (i + 1).toString();
 
-        // Información del popup
-        const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(`
-          <div class="p-2">
-            <div class="font-bold">${point.description}</div>
-            <div class="text-green-600">+$${point.price}</div>
-            <div class="text-sm">${point.deviationTime} min de desvío</div>
-          </div>
-        `);
+      const point = pickupPoints[i];
 
-        // Agregamos el marcador al mapa
-        new mapboxgl.Marker(el)
-          .setLngLat(simulatedCoordinates[index])
-          .setPopup(popup)
-          .addTo(map.current!);
-      }
-    });
+      // Información del popup con precio destacado
+      const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(`
+        <div class="p-2">
+          <div class="font-bold">${point.description}</div>
+          <div class="text-green-600 text-lg font-bold">+$${point.price}</div>
+          <div class="text-sm">${point.deviationTime} min de desvío</div>
+        </div>
+      `);
+
+      // Agregamos el marcador al mapa con las coordenadas correctas
+      const coordinates = santiagoCoordinates[i];
+      new mapboxgl.Marker(el)
+        .setLngLat([coordinates[0], coordinates[1]]) // Corregido: Pasamos un array de dos elementos
+        .setPopup(popup)
+        .addTo(map.current!);
+    }
 
     // Ajustamos el zoom para ver todos los marcadores
-    if (pickupPoints.length > 0 && simulatedCoordinates.length > 0) {
+    if (totalMarkers > 0) {
       const bounds = new mapboxgl.LngLatBounds();
-      simulatedCoordinates.forEach(coord => {
-        bounds.extend(coord);
-      });
+      // Extender los límites con cada punto de coordenada
+      for (let i = 0; i < totalMarkers; i++) {
+        bounds.extend([santiagoCoordinates[i][0], santiagoCoordinates[i][1]]); // Corregido: Pasamos un array de dos elementos
+      }
       
       map.current.fitBounds(bounds, {
         padding: 50,
